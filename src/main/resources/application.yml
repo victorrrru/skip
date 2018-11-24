@@ -1,0 +1,12 @@
+skip:
+  server:
+    port: 19933
+
+spring:
+  jackson:
+    date-format: yyyy-MM-dd HH:mm:ss
+    time-zone: GMT+8
+  datasource:
+    url: jdbc:mysql://10.106.11.37:3306/my_feedtruck?useUnicode=true&characterEncoding=UTF8
+    username: root
+    password: 111111

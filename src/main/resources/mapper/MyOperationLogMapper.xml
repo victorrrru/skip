@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.muyuan.platform.skip.mapper.MyOperationLogMapper">
+
+	<!-- 可根据自己的需求，是否要使用 -->
+    <resultMap type="com.muyuan.platform.entity.db.MyOperationLog" id="myOperationLogMap">
+        <result property="id" column="id"/>
+        <result property="deviceId" column="device_id"/>
+        <result property="deviceNo" column="device_no"/>
+        <result property="operationCode" column="operation_code"/>
+        <result property="param" column="param"/>
+        <result property="operationTime" column="operation_time"/>
+        <result property="executeTime" column="execute_time"/>
+        <result property="operationNum" column="operation_num"/>
+        <result property="optResult" column="opt_result"/>
+    </resultMap>
+
+</mapper>
