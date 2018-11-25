@@ -4,7 +4,7 @@
 <mapper namespace="com.muyuan.platform.skip.mapper.MyDeviceInfoMapper">
 
 	<!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.muyuan.platform.entity.db.MyDeviceInfo" id="myDeviceInfoMap">
+    <resultMap type="com.muyuan.platform.skip.entity.db.MyDeviceInfo" id="myDeviceInfoMap">
         <result property="id" column="id"/>
         <result property="deviceNo" column="device_no"/>
         <result property="vehicleNo" column="vehicle_no"/>

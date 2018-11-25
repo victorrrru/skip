@@ -4,7 +4,7 @@
 <mapper namespace="com.muyuan.platform.skip.mapper.MyAreaMapper">
 
 	<!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.muyuan.platform.entity.db.MyArea" id="myAreaMap">
+    <resultMap type="com.muyuan.platform.skip.entity.db.MyArea" id="myAreaMap">
         <result property="id" column="id"/>
         <result property="deviceId" column="device_id"/>
         <result property="deviceNo" column="device_no"/>

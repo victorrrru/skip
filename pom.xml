@@ -64,16 +64,23 @@
 			<artifactId>mybatis-spring-boot-starter</artifactId>
 			<version>1.3.1</version>
 		</dependency>
+
 		<dependency>
 			<groupId>org.mybatis</groupId>
 			<artifactId>mybatis</artifactId>
 			<version>3.4.4</version>
 		</dependency>
-		<!--通用Mapper -->
+
+		<!-- mybatis-plus begin -->
 		<dependency>
-			<groupId>tk.mybatis</groupId>
-			<artifactId>mapper</artifactId>
-			<version>${mapper.version}</version>
+			<groupId>com.baomidou</groupId>
+			<artifactId>mybatisplus-spring-boot-starter</artifactId>
+			<version>1.0.5</version>
+		</dependency>
+		<dependency>
+			<groupId>com.baomidou</groupId>
+			<artifactId>mybatis-plus</artifactId>
+			<version>2.1.8</version>
 		</dependency>
 
 		<!-- https://mvnrepository.com/artifact/net.sf.dozer/dozer -->
@@ -87,10 +94,6 @@
 			<groupId>com.alibaba</groupId>
 			<artifactId>druid</artifactId>
 			<version>${druid}</version>
-		</dependency>
-		<dependency>
-			<groupId>org.springframework.boot</groupId>
-			<artifactId>spring-boot-starter-jta-atomikos</artifactId>
 		</dependency>
 	</dependencies>
 
@@ -115,18 +118,5 @@
 			</plugins>
 		</pluginManagement>
 	</build>
-
-	<distributionManagement>
-		<repository>
-			<id>releases</id>
-			<name>muyuan Internal Repository</name>
-			<url>http://10.106.11.33/repository/maven-releases/</url>
-		</repository>
-		<snapshotRepository>
-			<id>snapshots</id>
-			<name>muyuan Snapshot Repository</name>
-			<url>http://10.106.11.33/repository/maven-snapshots/</url>
-		</snapshotRepository>
-	</distributionManagement>
 
 </project>

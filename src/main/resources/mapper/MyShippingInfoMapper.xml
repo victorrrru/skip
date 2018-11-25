@@ -4,7 +4,7 @@
 <mapper namespace="com.muyuan.platform.skip.mapper.MyShippingInfoMapper">
 
 	<!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.muyuan.platform.entity.db.MyShippingInfo" id="myShippingInfoMap">
+    <resultMap type="com.muyuan.platform.skip.entity.db.MyShippingInfo" id="myShippingInfoMap">
         <result property="id" column="id"/>
         <result property="orderNo" column="order_no"/>
         <result property="deviceId" column="device_id"/>
