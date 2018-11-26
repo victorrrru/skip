@@ -10,9 +10,9 @@ import lombok.experimental.Accessors;
 @Data
 @Accessors(chain = true)
 public class DeviceInfo {
-    private String deviceId;
-    private String hardWare;
-    private String softWare;
+    private String mac;
+    private String hardware;
+    private String software;
     private String sim;
     private String deviceNo;
     private String ip;

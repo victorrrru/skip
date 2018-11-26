@@ -15,7 +15,7 @@ public class EventRecord {
     //数据序号
     private String dataId;
     //事件
-    private String event;
+    private String alarm;
     //传感器方向
     private Integer sensorDir;
     //gps方向

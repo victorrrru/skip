@@ -7,6 +7,7 @@ import com.baomidou.mybatisplus.enums.IdType;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import lombok.experimental.Accessors;
 
 import java.io.Serializable;
 import java.util.Date;
@@ -22,14 +23,17 @@ import java.math.BigDecimal;
  */
 @TableName("my_pos_log")
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
+@Accessors(chain = true)
 public class MyPosLog implements Serializable {
     private static final long serialVersionUID = 1L;
 
     // 主键
     @TableId(value = "id", type = IdType.AUTO)
     private Integer id;
+
+    // 设备id
+    @TableField(value = "device_id")
+    private Integer deviceId;
 
     // 设备编号
     @TableField(value = "device_no")
@@ -48,8 +52,8 @@ public class MyPosLog implements Serializable {
     private BigDecimal speed;
 
     // 方向
-    @TableField(value = "dre")
-    private Integer dre;
+    @TableField(value = "direction")
+    private Integer direction;
 
     // GPS
     @TableField(value = "gps")

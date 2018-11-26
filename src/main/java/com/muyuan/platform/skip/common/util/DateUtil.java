@@ -1,5 +1,9 @@
 package com.muyuan.platform.skip.common.util;
 
+import org.apache.tomcat.util.buf.HexUtils;
+
+import java.time.LocalDateTime;
+
 /**
  * @author 范文武
  * @date 2018/11/20 16:51
@@ -19,5 +23,26 @@ public class DateUtil {
         String minute = String.format("%02d", Integer.parseInt(str.substring(8, 10), 16));
         String second = String.format("%02d", Integer.parseInt(str.substring(10, 12), 16));
         return "20" + String.format("%s-%s-%s %s:%s:%s", year, month, day, hour, minute, second);
+    }
+
+    /**
+     * 得到时间的十六进制
+     * @author fww
+     */
+    public static String getDateHex() {
+        LocalDateTime now = LocalDateTime.now();
+        String year = Integer.toHexString(now.getYear() - 2000);
+        year = year.length() == 1 ? "0" + year : year;
+        String month = Integer.toHexString(now.getMonth().getValue());
+        month = month.length() == 1 ? "0" + month : month;
+        String day = Integer.toHexString(now.getDayOfMonth());
+        day = day.length() == 1 ? "0" + day : day;
+        String hour = Integer.toHexString(now.getHour());
+        hour = hour.length() == 1 ? "0" + hour : hour;
+        String minute = Integer.toHexString(now.getMinute());
+        minute = minute.length() == 1 ? "0" + minute : minute;
+        String second = Integer.toHexString(now.getSecond());
+        second = second.length() == 1 ? "0" + second : second;
+        return year + month + day + hour + minute + second;
     }
 }

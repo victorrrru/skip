@@ -40,10 +40,11 @@ public class EchoServerHandler extends ChannelHandlerAdapter {
         ByteBuf in = (ByteBuf) msg;
         byte[] receiveMsgBytes = new byte[in.readableBytes()];
         in.readBytes(receiveMsgBytes);
-        String hex = ByteUtils.byteToHexStr(receiveMsgBytes);
-        log.info(getReturn(ctx) + "\nServer Received:" + hex);
-        byte[] answer = analysis.commonAnalysis(hex);
-        ctx.writeAndFlush(Unpooled.copiedBuffer(answer));
+        String receive = ByteUtils.byteToHexStr(receiveMsgBytes);
+        log.info(getReturn(ctx) + "\nServer Received:" + receive);
+        String answer = analysis.commonAnalysis(receive);
+        log.info(getReturn(ctx) + "\nServer send:" + answer);
+        ctx.writeAndFlush(Unpooled.copiedBuffer(ByteUtils.hexStrToByte(answer)));
     }
 
     @Override

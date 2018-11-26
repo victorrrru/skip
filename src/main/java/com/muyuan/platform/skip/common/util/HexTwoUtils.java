@@ -10,6 +10,10 @@ public class HexTwoUtils {
         System.out.println(hexStringToByte("ED4903"));
     }
 
+    /**
+     * 16进制-》2进制  字符串
+     * @author fww
+     */
     public static String hexStringToByte(String hex) {
         String cover = Integer.toBinaryString(1 << 4).substring(1);
         StringBuilder res = new StringBuilder();
@@ -31,6 +35,21 @@ public class HexTwoUtils {
             b = (byte) "0123456789ABCDEF".indexOf(c);
         }
         return b;
+    }
+
+    /**
+     * 16进制转10进制(ip)
+     * @author fww
+     */
+    public static String hexStringToTen(String hex) {
+        String one = hex.substring(0, 2);
+        String two = hex.substring(2, 4);
+        String three = hex.substring(4, 6);
+        String four = hex.substring(6, 8);
+        StringBuilder builder = new StringBuilder();
+        return builder.append(Integer.parseInt(one, 16)).append(".").append(Integer.parseInt(two, 16))
+                .append(".").append(Integer.parseInt(three, 16)).append(".").append(Integer.parseInt(four, 16))
+                .toString();
     }
 
 }
