@@ -3,7 +3,10 @@ package com.muyuan.platform.skip.mapper;
 
 import com.baomidou.mybatisplus.mapper.BaseMapper;
 import com.muyuan.platform.skip.entity.db.MyDeviceInfo;
+import org.apache.ibatis.annotations.Select;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 
 /**
  * 设备信息
@@ -14,5 +17,6 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface MyDeviceInfoMapper extends BaseMapper<MyDeviceInfo> {
-	
+    @Select("SELECT id,device_no AS deviceNo, communication_time AS communicationTime, online FROM my_device_info ")
+    List<MyDeviceInfo> listDevice();
 }

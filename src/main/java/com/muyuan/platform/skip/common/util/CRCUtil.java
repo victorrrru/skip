@@ -1,5 +1,7 @@
 package com.muyuan.platform.skip.common.util;
 
+import com.mchange.lang.ByteUtils;
+
 /**
  * @author 范文武
  * @date 2018/11/21 11:09
@@ -8,28 +10,9 @@ public class CRCUtil {
 
     public static void main(String[] args) {
         String str = "A55A1302008112010000120A0D161833";
-        String i = crc16(ByteUtils.byteToUnint(toBytes(str)));
+        String i = crc16(ByteUtil.byteToUnit(ByteUtil.toBytes(str)));
         System.out.println(i);
     }
-
-    /**
-     * 将16进制字符串转换为byte[]
-     *
-     * @author fww
-     */
-    public static byte[] toBytes(String str) {
-        if (str == null || "".equals(str.trim())) {
-            return new byte[0];
-        }
-        byte[] bytes = new byte[str.length() / 2];
-        for (int i = 0; i < str.length() / 2; i++) {
-            String subStr = str.substring(i * 2, i * 2 + 2);
-            bytes[i] = (byte) Integer.parseInt(subStr, 16);
-        }
-
-        return bytes;
-    }
-
 
     /**
      * crc16算法
@@ -52,6 +35,11 @@ public class CRCUtil {
                 }
             }
         }
-        return Integer.toHexString(crc16);
+        String hex = Integer.toHexString(crc16);
+        StringBuilder builder = new StringBuilder(Integer.toHexString(crc16));
+        for (int a = 0; a < 4 - hex.length(); a++) {
+            builder.insert(0, "0");
+        }
+        return builder.toString();
     }
 }

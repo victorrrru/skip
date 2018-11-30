@@ -21,8 +21,6 @@ import java.util.Date;
  */
 @TableName("my_operation_log")
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 public class MyOperationLog implements Serializable {
     private static final long serialVersionUID = 1L;
 
@@ -40,7 +38,7 @@ public class MyOperationLog implements Serializable {
 
     // 操作码
     @TableField(value = "operation_code")
-    private String operationCode;
+    private Integer operationCode;
 
     // 参数
     @TableField(value = "param")
@@ -61,6 +59,10 @@ public class MyOperationLog implements Serializable {
     // 结果
     @TableField(value = "opt_result")
     private String optResult;
+
+    // 状态（0未处理，1成功，1失败）
+    @TableField(value = "status")
+    private Byte status;
 
 
 }

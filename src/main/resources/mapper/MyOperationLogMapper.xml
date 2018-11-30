@@ -16,4 +16,24 @@
         <result property="optResult" column="opt_result"/>
     </resultMap>
 
+    <select id="selectCtrl" resultType="com.muyuan.platform.skip.entity.CtrlRes">
+        SELECT
+             ol.id AS id,
+             di.ip AS ip,
+             ol.device_no AS deviceNo,
+             ol.operation_code AS operationCode,
+             ol.param AS param,
+             ol.operation_time AS operationTime,
+             ol.execute_time AS executeTime,
+             ol.operation_num AS operation_num
+        FROM my_operation_log ol
+        LEFT JOIN my_device_info di ON ol.device_id=di.id
+        WHERE ol.`status`!=1
+        AND ol.operation_num &lt; 10
+        AND ol.operation_time=(
+        SELECT MAX(ol2.operation_time)
+        FROM my_operation_log ol2
+        WHERE ol2.device_id=ol.device_id)
+    </select>
+
 </mapper>

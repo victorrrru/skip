@@ -1,7 +1,5 @@
 package com.muyuan.platform.skip.common.util;
 
-import org.apache.tomcat.util.buf.HexUtils;
-
 import java.time.LocalDateTime;
 
 /**
