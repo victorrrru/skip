@@ -37,10 +37,7 @@ public class AlarmBiz {
         String deviceNo = HexUtil.reverseHex(head.substring(4, 12));
         String dataId = data.substring(0, 2);
         String event = HexUtil.toStringHex(data.substring(2, 50)).trim();
-        String dir = HexUtil.hexStringToByte(data.substring(50, 52));
-        Integer sensorDir = Integer.parseInt(dir.substring(0, 4), 2);
-        Integer gpsDir = Integer.parseInt(dir.substring(4, 8), 2);
-        Integer alarmType = Integer.valueOf(data.substring(52, 54));
+        Integer alarmType = Integer.parseInt(data.substring(52, 54), 16);
         String datetime = DateUtil.getDate(data.substring(54, 66));
         String gps = HexUtil.hexStringToByte(data.substring(66, 68));
         Integer satelliteNum = Integer.parseInt(gps.substring(0, 4), 2);
@@ -51,8 +48,6 @@ public class AlarmBiz {
         EventRecord eventRecord = new EventRecord()
                 .setDataId(dataId)
                 .setAlarm(event)
-                .setSensorDir(sensorDir)
-                .setGpsDir(gpsDir)
                 .setAlarmType(alarmType)
                 .setDateTime(datetime)
                 .setSatelliteNum(satelliteNum)
