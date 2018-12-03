@@ -17,13 +17,14 @@ import java.net.InetSocketAddress;
 /**
  * @author 范文武
  * @date 2018/11/17 19:00
+ *
  */
 @Slf4j
 @Component
-public class EchoServer {
+public class NettyServer {
 
     @Autowired
-    private EchoServerHandler echoServerHandler;
+    private NettyServerHandler nettyServerHandler;
 
     @Value("${skip.server.port}")
     private Integer port;
@@ -41,7 +42,7 @@ public class EchoServer {
                 .childHandler(new ChannelInitializer<SocketChannel>() {
                     @Override
                     protected void initChannel(SocketChannel ch) throws Exception {
-                        ch.pipeline().addLast(echoServerHandler);
+                        ch.pipeline().addLast(nettyServerHandler);
                     }
                 });
         ChannelFuture future = serverBootstrap.bind().sync();

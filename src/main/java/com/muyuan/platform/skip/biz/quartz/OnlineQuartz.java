@@ -1,5 +1,6 @@
 package com.muyuan.platform.skip.biz.quartz;
 
+import com.muyuan.platform.skip.biz.ChannelMap;
 import com.muyuan.platform.skip.entity.db.MyDeviceInfo;
 import com.muyuan.platform.skip.mapper.MyDeviceInfoMapper;
 import lombok.extern.slf4j.Slf4j;
@@ -31,6 +32,7 @@ public class OnlineQuartz {
                 device.setOnline(0);
                 log.info(device.getDeviceNo() + "离线");
                 myDeviceInfoMapper.updateById(device);
+                ChannelMap.removeChannel(device.getIp());
             }
         }
     }

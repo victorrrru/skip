@@ -21,7 +21,7 @@ import java.util.Date;
 @Slf4j
 @Component
 @ChannelHandler.Sharable
-public class EchoServerHandler extends ChannelHandlerAdapter {
+public class NettyServerHandler extends ChannelHandlerAdapter {
 
     @Autowired
     private Analysis analysis;

@@ -19,6 +19,7 @@ import java.util.List;
 /**
  * @author 范文武
  * @date 2018/11/28 10:20
+ *
  */
 @Component
 @Slf4j
@@ -50,6 +51,7 @@ public class CtrlQuartz {
             String len = Integer.toHexString(ctrl.getParam().length() / 2 + 10);
             String answer = commonBiz.getAnswer(HexUtil.reverseHex(ctrl.getDeviceNo()), type.length() == 1 ? "0" + type : type,
                     ctrl.getParam(), len.length() == 1 ? "0" + len : len);
+            //当服务端给客户端发消息时，io：堵塞写，nio：不堵塞写，而都不会等待客户端返回
             ctx.writeAndFlush(Unpooled.copiedBuffer(ByteUtils.fromHexAscii(answer)));
             log.info("Server send: " +  answer);
         }
