@@ -75,7 +75,6 @@ public class HeartBeatBiz {
                 .setMajorMainsInput(majorMainsInput)
                 .setInnerMainsInput(innerMainsInput)
                 .setMotorElectricity(motorElectricity);
-        log.info(heartPackageInfo.toString());
         MyDeviceInfo entity = BeanMapperUtil.map(heartPackageInfo, MyDeviceInfo.class);
         MyDeviceInfo device = commonBiz.getMyDeviceInfo(deviceNo);
         if (device != null) {

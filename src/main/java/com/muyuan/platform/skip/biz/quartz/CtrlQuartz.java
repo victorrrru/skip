@@ -32,7 +32,6 @@ public class CtrlQuartz {
 
     @Scheduled(fixedRate = 1000 * 60)
     public void execute() {
-        log.info("调度开始");
         List<CtrlRes> ctrls = myOperationLogMapper.selectCtrl();
         for (CtrlRes ctrl : ctrls) {
             OioSocketChannel ctx = (OioSocketChannel) ChannelMap.getChannelByName(ctrl.getIp());

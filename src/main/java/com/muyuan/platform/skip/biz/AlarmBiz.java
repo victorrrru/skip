@@ -65,6 +65,7 @@ public class AlarmBiz {
             myAlarmLogMapper.insert(myAlarmLog);
             //更新设备通信时间
             device.setCommunicationTime(new Date());
+            device.setOnline(1);
             myDeviceInfoMapper.updateById(device);
         }
         return eventRecord;

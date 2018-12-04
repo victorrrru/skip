@@ -17,6 +17,6 @@ import java.util.List;
  */
 @Repository
 public interface MyDeviceInfoMapper extends BaseMapper<MyDeviceInfo> {
-    @Select("SELECT id,device_no AS deviceNo, communication_time AS communicationTime, online FROM my_device_info ")
+    @Select("SELECT id,device_no AS deviceNo, communication_time AS communicationTime, online FROM my_device_info where online = 1")
     List<MyDeviceInfo> listDevice();
 }

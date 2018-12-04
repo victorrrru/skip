@@ -10,9 +10,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import static com.muyuan.platform.skip.common.util.StringUtil.getReturn;
 
 /**
  * @author 范文武
@@ -26,8 +24,6 @@ public class NettyServerHandler extends ChannelHandlerAdapter {
     @Autowired
     private Analysis analysis;
 
-    private SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
-
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
         cause.printStackTrace();
@@ -39,10 +35,13 @@ public class NettyServerHandler extends ChannelHandlerAdapter {
         byte[] receiveMsgBytes = new byte[in.readableBytes()];
         in.readBytes(receiveMsgBytes);
         String receive = ByteUtils.toHexAscii(receiveMsgBytes);
-        log.info(getReturn(ctx) + "\nServer Received:" + receive);
+        if (StringUtils.isBlank(receive) || receive.length() != Integer.valueOf(receive.substring(12, 14), 16) * 2) {
+            log.info(getIp(ctx) + "    数据包长度不对，包已丢弃");
+            ctx.close();
+            return;
+        }
         String answer = analysis.commonAnalysis(getIp(ctx), receive);
         if (StringUtils.isNotBlank(answer)) {
-            log.info(getReturn(ctx) + "\nServer answer:" + answer);
             ctx.writeAndFlush(Unpooled.copiedBuffer(ByteUtils.fromHexAscii(answer)));
         }
     }
@@ -57,14 +56,6 @@ public class NettyServerHandler extends ChannelHandlerAdapter {
     public void channelUnregistered(ChannelHandlerContext ctx) throws Exception {
         ChannelMap.removeChannel(getIp(ctx));
         log.info(getReturn(ctx) + " 连接断开");
-    }
-
-    /**
-     * 得到公共返回
-     * @author fww
-     */
-    private String getReturn(ChannelHandlerContext ctx) {
-        return format.format(new Date()) + "  " + ctx.channel().remoteAddress();
     }
 
     /**
