@@ -1,5 +1,7 @@
 package com.muyuan.platform.skip.common.util;
 
+import com.mchange.lang.ByteUtils;
+
 /**
  * @author 范文武
  * @date 2018/11/22 19:28
@@ -7,9 +9,9 @@ package com.muyuan.platform.skip.common.util;
 public class ByteUtil {
 
     public static void main(String[] args) {
-        byte[] bytes1 = hexStringToBytes("5AA516010001420135FFD8054D5038332565234301034701383938363034313" +
-                "9313631376330353834383038160100017A7257D5411F000000000000320A1EFAFF94");
-        System.out.println(byteToHex(bytes1));
+        int res =  0x88;
+        res |= 0x20;
+        System.out.println(Integer.toHexString(res));
     }
 
     /**

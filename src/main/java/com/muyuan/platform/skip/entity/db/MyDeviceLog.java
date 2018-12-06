@@ -19,11 +19,11 @@ import java.math.BigDecimal;
  * @email 
  * @date 2018-11-23 15:43:53
  */
-@TableName("my_alarm_log")
+@TableName("my_device_log")
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
-public class MyAlarmLog implements Serializable {
+public class MyDeviceLog implements Serializable {
     private static final long serialVersionUID = 1L;
 
     // 主键
@@ -38,11 +38,11 @@ public class MyAlarmLog implements Serializable {
     @TableField(value = "device_no")
     private String deviceNo;
 
-    // 警情
+    // 日志
     @TableField(value = "alarm")
     private String alarm;
 
-    // 警情类型
+    // 日志类型
     @TableField(value = "log_type")
     private Integer logType;
 

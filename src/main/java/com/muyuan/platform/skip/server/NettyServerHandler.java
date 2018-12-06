@@ -6,6 +6,7 @@ import com.muyuan.platform.skip.biz.ChannelMap;
 import io.netty.buffer.ByteBuf;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.*;
+import io.netty.util.ReferenceCountUtil;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -31,18 +32,22 @@ public class NettyServerHandler extends ChannelHandlerAdapter {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        ByteBuf in = (ByteBuf) msg;
-        byte[] receiveMsgBytes = new byte[in.readableBytes()];
-        in.readBytes(receiveMsgBytes);
-        String receive = ByteUtils.toHexAscii(receiveMsgBytes);
-        if (StringUtils.isBlank(receive) || receive.length() != Integer.valueOf(receive.substring(12, 14), 16) * 2) {
-            log.info(getIp(ctx) + "    数据包长度不对，包已丢弃");
-            ctx.close();
-            return;
-        }
-        String answer = analysis.commonAnalysis(getIp(ctx), receive);
-        if (StringUtils.isNotBlank(answer)) {
-            ctx.writeAndFlush(Unpooled.copiedBuffer(ByteUtils.fromHexAscii(answer)));
+        try {
+            ByteBuf in = (ByteBuf) msg;
+            byte[] receiveMsgBytes = new byte[in.readableBytes()];
+            in.readBytes(receiveMsgBytes);
+            String receive = ByteUtils.toHexAscii(receiveMsgBytes);
+            if (StringUtils.isBlank(receive) || receive.length() != Integer.valueOf(receive.substring(12, 14), 16) * 2) {
+                log.info(getIp(ctx) + "    数据包长度不对，包已丢弃");
+                ctx.close();
+                return;
+            }
+            String answer = analysis.commonAnalysis(getIp(ctx), receive);
+            if (StringUtils.isNotBlank(answer)) {
+                ctx.writeAndFlush(Unpooled.copiedBuffer(ByteUtils.fromHexAscii(answer)));
+            }
+        } finally {
+            ReferenceCountUtil.release(msg);
         }
     }
 

@@ -3,38 +3,5 @@
 
 <mapper namespace="com.muyuan.platform.skip.mapper.MyDeviceInfoMapper">
 
-	<!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.muyuan.platform.skip.entity.db.MyDeviceInfo" id="myDeviceInfoMap">
-        <result property="id" column="id"/>
-        <result property="deviceNo" column="device_no"/>
-        <result property="vehicleNo" column="vehicle_no"/>
-        <result property="areaId" column="area_id"/>
-        <result property="company" column="company"/>
-        <result property="address" column="address"/>
-        <result property="online" column="online"/>
-        <result property="lock" column="lock"/>
-        <result property="fortification" column="fortification"/>
-        <result property="signal" column="signal"/>
-        <result property="registTime" column="regist_time"/>
-        <result property="communicationTime" column="communication_time"/>
-        <result property="note" column="note"/>
-        <result property="lon" column="lon"/>
-        <result property="lat" column="lat"/>
-        <result property="alarm" column="alarm"/>
-        <result property="mac" column="mac"/>
-        <result property="ip" column="ip"/>
-        <result property="direction" column="direction"/>
-        <result property="sim" column="sim"/>
-        <result property="hardware" column="hardware"/>
-        <result property="software" column="software"/>
-        <result property="crtTime" column="crt_time"/>
-        <result property="crtUser" column="crt_user"/>
-        <result property="crtName" column="crt_name"/>
-        <result property="crtHsot" column="crt_hsot"/>
-        <result property="updTime" column="upd_time"/>
-        <result property="updUser" column="upd_user"/>
-        <result property="updName" column="upd_name"/>
-        <result property="updHost" column="upd_host"/>
-    </resultMap>
 
 </mapper>

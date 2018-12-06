@@ -2,7 +2,8 @@ package com.muyuan.platform.skip.mapper;
 
 
 import com.baomidou.mybatisplus.mapper.BaseMapper;
-import com.muyuan.platform.skip.entity.db.MyAlarmLog;
+import com.muyuan.platform.skip.entity.db.MyDeviceAlarm;
+import com.muyuan.platform.skip.entity.db.MyDeviceLog;
 import org.springframework.stereotype.Repository;
 
 /**
@@ -13,6 +14,6 @@ import org.springframework.stereotype.Repository;
  * @date 2018-11-23 15:43:53
  */
 @Repository
-public interface MyAlarmLogMapper extends BaseMapper<MyAlarmLog> {
+public interface MyDeviceAlarmMapper extends BaseMapper<MyDeviceAlarm> {
 	
 }

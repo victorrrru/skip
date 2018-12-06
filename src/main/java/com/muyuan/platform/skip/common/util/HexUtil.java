@@ -1,5 +1,7 @@
 package com.muyuan.platform.skip.common.util;
 
+import java.math.BigDecimal;
+
 /**
  * @author 范文武
  * @date 2018/11/19 17:57
@@ -7,7 +9,7 @@ package com.muyuan.platform.skip.common.util;
 public class HexUtil {
 
     public static void main(String[] args) {
-        System.out.println(reverseHex("01c6dbe9"));
+
     }
 
     /**

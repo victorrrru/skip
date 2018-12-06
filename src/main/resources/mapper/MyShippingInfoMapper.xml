@@ -3,19 +3,5 @@
 
 <mapper namespace="com.muyuan.platform.skip.mapper.MyShippingInfoMapper">
 
-	<!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.muyuan.platform.skip.entity.db.MyShippingInfo" id="myShippingInfoMap">
-        <result property="id" column="id"/>
-        <result property="orderNo" column="order_no"/>
-        <result property="deviceId" column="device_id"/>
-        <result property="deviceNo" column="device_no"/>
-        <result property="truckNum" column="truck_num"/>
-        <result property="destination" column="destination"/>
-        <result property="source" column="source"/>
-        <result property="deliveryTime" column="delivery_time"/>
-        <result property="signTime" column="sign_time"/>
-        <result property="checked" column="checked"/>
-        <result property="sourceNo" column="source_no"/>
-    </resultMap>
 
 </mapper>

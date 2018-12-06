@@ -11,9 +11,9 @@ spring:
     date-format: yyyy-MM-dd HH:mm:ss
     time-zone: GMT+8
   datasource:
-    url: jdbc:mysql://10.106.11.37:3306/my_feedtruck?useUnicode=true&characterEncoding=UTF8
+    url: jdbc:mysql://120.77.173.16:3306/my_feedtruck?useUnicode=true&characterEncoding=UTF8
     username: root
-    password: 111111
+    password: 123456
     driver-class-name: com.mysql.jdbc.Driver
     type: com.alibaba.druid.pool.DruidDataSource
 
@@ -46,4 +46,6 @@ mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
     cache-enabled: false
+logging:
+  config: classpath:logback.xml
 

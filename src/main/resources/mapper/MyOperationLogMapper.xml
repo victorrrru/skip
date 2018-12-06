@@ -3,19 +3,6 @@
 
 <mapper namespace="com.muyuan.platform.skip.mapper.MyOperationLogMapper">
 
-	<!-- 可根据自己的需求，是否要使用 -->
-    <resultMap type="com.muyuan.platform.skip.entity.db.MyOperationLog" id="myOperationLogMap">
-        <result property="id" column="id"/>
-        <result property="deviceId" column="device_id"/>
-        <result property="deviceNo" column="device_no"/>
-        <result property="operationCode" column="operation_code"/>
-        <result property="param" column="param"/>
-        <result property="operationTime" column="operation_time"/>
-        <result property="executeTime" column="execute_time"/>
-        <result property="operationNum" column="operation_num"/>
-        <result property="optResult" column="opt_result"/>
-    </resultMap>
-
     <select id="selectCtrl" resultType="com.muyuan.platform.skip.entity.CtrlRes">
         SELECT
              ol.id AS id,
@@ -29,6 +16,7 @@
         FROM my_operation_log ol
         LEFT JOIN my_device_info di ON ol.device_id=di.id
         WHERE ol.`status`!=1
+        AND TIMESTAMPDIFF(SECOND,ol.operation_time, NOW()) &lt; 120
         AND ol.operation_num &lt; 10
         AND ol.operation_time=(
         SELECT MAX(ol2.operation_time)

@@ -13,6 +13,10 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
+
+import java.time.Duration;
+import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 import java.util.Date;
 import java.util.List;
 
@@ -45,6 +49,10 @@ public class CtrlQuartz {
                 myOperationLogMapper.updateById(entity);
                 log.info(ctrl.getDeviceNo() + "未连接(" + ctrl.getParam() + ")");
                 continue;
+            }
+            if (Duration.between(Instant.ofEpochMilli(ctrl.getOperationTime().getTime()),
+                    Instant.now()).get(ChronoUnit.SECONDS) > 60) {
+
             }
             String type = Integer.toHexString(ctrl.getOperationCode());
             String len = Integer.toHexString(ctrl.getParam().length() / 2 + 10);
